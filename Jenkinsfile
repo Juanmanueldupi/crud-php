@@ -23,6 +23,7 @@ pipeline {
                         script {
                             withDockerRegistry([credentialsId: 'DOCKER_HUB', url: '']) {
                             def dockerImage = docker.build("jmdpsysadmin/crudphp:${env.BUILD_ID}")
+                            def imageName = dockerImage.imageId
                             dockerImage.push()
                             }
                         }
@@ -48,12 +49,9 @@ pipeline {
     }
     post {
         always {
-            script {
-
-                mail to: 'juanmadupi@gmail.com',
-                subject: "Status of pipeline: ${currentBuild.fullDisplayName}",
-                body: "${env.BUILD_URL} has result ${currentBuild.result}. Generated image: ${dockerImage}"
+            mail to: 'juanmadupi@gmail.com',
+            subject: "Status of pipeline: ${currentBuild.fullDisplayName}",
+            body: "${env.BUILD_URL} has result ${currentBuild.result} y la imagen se llama ${imageName}"
             }
         }
     }
-}
