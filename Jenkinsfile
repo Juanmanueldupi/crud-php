@@ -48,9 +48,13 @@ pipeline {
     }
     post {
         always {
-            mail to: 'juanmadupi@gmail.com',
-            subject: "Status of pipeline: ${currentBuild.fullDisplayName}",
-            body: "${env.BUILD_URL} has result ${currentBuild.result}"
+            script {
+                def generatedImageName = env.GENERATED_IMAGE_NAME ?: "N/A"
+
+                mail to: 'juanmadupi@gmail.com',
+                subject: "Status of pipeline: ${currentBuild.fullDisplayName}",
+                body: "${env.BUILD_URL} has result ${currentBuild.result}. Generated image: ${generatedImageName}"
+            }
         }
     }
 }
