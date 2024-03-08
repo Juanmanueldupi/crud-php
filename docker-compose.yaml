@@ -2,7 +2,7 @@ version: '3.8'
 services:
   crud:
     container_name: crudphp
-    image: jmdpsysadmin/crudphp:2
+    image: jmdpsysadmin/crudphp:3
     restart: always
     environment:
       DB_USER: admin
