@@ -1,0 +1,29 @@
+version: '3.8'
+services:
+  crud:
+    container_name: crudphp
+    image: jmdpsysadmin/crudphp:1
+    restart: always
+    environment:
+      DB_USER: admin
+      DB_PASSWORD: admin
+      DB_HOST: bd_mariadb_crud
+      DB_NAME: crud
+      BASE_URL: http://localhost:8085/
+    ports:
+      - 8085:80
+    depends_on:
+      - db_crud
+  db_crud:
+    container_name: bd_mariadb_crud
+    image: mariadb
+    restart: always
+    environment:
+      MARIADB_ROOT_PASSWORD: root
+      MARIADB_DATABASE: crud
+      MARIADB_USER: admin
+      MARIADB_PASSWORD: admin
+    volumes:
+      - mariadbcrud_data:/var/lib/mysql
+volumes:
+    mariadbcrud_data:
