@@ -31,7 +31,7 @@ pipeline {
                 stage('Remove image') {
                     steps {
                         script {
-                            sh "docker rmi jmdpsysadmin/django_tutorial:${env.BUILD_ID}"
+                            sh "docker rmi jmdpsysadmin/crudphp:${env.BUILD_ID}"
                         }
                     }
                 }
