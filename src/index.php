@@ -21,7 +21,7 @@ $result = mysqli_query($mysqli, "SELECT * FROM users ORDER BY id DESC");
 	<header class="d-flex align-items-center pb-3 mb-5 border-bottom">
 		<a href="/" class="text-dark text-decoration-none">
 			<img src="images/code-solid.svg" width="40" height="32" class="me-2">
-			<span class="fs-4">Company name</span>
+			<span class="fs-4">Mira que bien funciona el examen de jmdp</span>
 		</a>
 	</header>
 
